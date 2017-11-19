@@ -1,0 +1,54 @@
+{% assign add_to_cart = 'Add to Order' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+<div id="{{ title | handleize }}-{{ subtitle | handleize }}" class="product" itemscope
+     itemtype="http://schema.org/Product">
+    <div class="images">
+        <img src="{{ product.featured_image | product_img_url: "medium" }}"/>
+        <img class="high-res" src="{{ product.featured_image | product_img_url: "master" }}"/>
+    </div>
+    <div class="description">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="row">
+                    <h4 class="modal-title product-title"
+                        id="modal-{{ title | handleize }}-{{ subtitle | handleize }}-label">{{ title }}</h4>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="row">
+                    <div class="description">{{ product.description | split: '~section 2~' | first }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="mr-shop mr-shop--bespoke">
+            <div class="row">
+                <div class="col-xs-12 col-md-4"></div>
+                <div class="col-xs-12 col-md-8">
+                    <form action="/cart/add" id="add-to-cart-form" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{{ product.variants.first.id }}"/>
+                        <div class="content-wrapper clearfix">
+                            <p class="price"><span class="money">{{ product.price | money_with_currency }}</span></p>
+                            {% include 'product-customizer' %}
+                        </div>
+                        <div class="bottom-description">{{ product.description | split: '~section 2~' | last }}</div>
+                        <div class="btn-wrapper clearfix">
+                            {% if product.available %}
+                                <a class="btn btn-default btn-add-to-cart"
+                                   data-id="{{ product.variants[0].id }}">{{ add_to_cart | escape }}</a>
+                            {% else %}
+                                <div class="back-order"><p>Sold out</p><a
+                                            class="btn btn-default btn-back-order BIS_trigger"
+                                            data-id="{{ product.variants[0].id }}"
+                                            data-product-handle="{{ product.handle }}">Back
+                                        order</a></div>
+                            {% endif %}
+                            <a href="/cart" class="btn btn-default btn-check-out">Complete Order</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

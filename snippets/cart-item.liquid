@@ -1,0 +1,27 @@
+{% comment %}
+
+This snippet renders a cart item as a table row in the checkout.
+
+For more information, see:
+- http://docs.shopify.com/themes/liquid-variables/cart
+
+{% endcomment %}
+{% assign titles = item.product.title | split: '-' %}
+{% assign title = titles | first | strip %}
+{% assign subtitle = titles | last | strip %}
+<tr>
+    <td class="details">
+        <a href="#" class="close" title="Remove {{ cart-item.product.title }} from your cart" onclick="remove_item({{cart-item.variant.id}}); return false;">&times;</a>
+        <h4 class="product-title"><a href="{{ item.product.url }}" target="_blank">{{ title }}</a></h4>
+        <p class="cart__product-meta">{% include 'product-customizer-helper' %}</p>
+        <p class="product-subtitle">{{ subtitle }} {{ item.variant.title }}</p>
+    </td>
+
+    <td class="unit-price">{{ cart-item.price | money }}</td>
+
+    <td class="quantity">
+        <input type="text" class="form-control text-center" name="updates[{{cart-item.variant.id}}]" id="updates_{{ cart-item.variant.id }}" value="{{ cart-item.quantity }}" />
+    </td>
+
+    <td class="total-price">{{ cart-item.line_price | money }}</td>
+</tr>

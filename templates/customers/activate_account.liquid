@@ -1,0 +1,60 @@
+<header id="brand-top" class="brand-wrapper">
+    <a href="/"><img src="{{ 'lewis-fredericks-2.png' | asset_url }}"/></a>
+</header>
+
+<main>
+    <div class="container page-padding"></div>
+    <div class="container padded">
+        <!-- Activate Account Form -->
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+                {% form 'activate_customer_password' %}
+
+                
+
+                <!-- Display any reset errors. -->
+                {% if form.errors %}
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Activation failed.</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>There was a problem activating your account.</p>
+                        <p>Please check that you typed your desired password correctly both times.</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <h3>Activate your account</h3>
+                        <span class="help-block">Create your password to activate your account.</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="customer[password]" name="customer[password]" value="" placeholder="new password"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="customer[password_confirmation]" name="customer[password_confirmation]" placeholder="confirm password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-lg btn-primary">Activate Account</button>
+                </div>
+                <div class="text-right">
+                    <button type="submit" name="decline" class="btn">Decline Invitation</button>
+                </div>
+                {% endform %}
+            </div>
+        </div>
+    </div>
+</main>

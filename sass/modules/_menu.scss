@@ -1,0 +1,25 @@
+nav {
+  div.nav-wrapper {
+    top: calc(50vh - 40px);
+    ul {
+      &.main {
+        a {
+          font-size: 22px;
+        }
+      }
+      &.social {
+        a {
+          text-transform: uppercase;
+        }
+      }
+      li {
+        a {
+          &.active {
+            padding-left: 0;
+            font-family: 'national-semibold', sans-serif;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.mr-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  &__outer {
+    display: table;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+  }
+  &__wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events: none;
+    transition: transform .3s ease-out;
+    transform: translate3d(0, -25%, 0);
+    input, textarea {
+      background-color: white;
+    }
+    &.in {
+      transform: translate3d(0, 0, 0);
+    }
+    & > div {
+      background: white;
+      width: 50vw;
+      height: inherit;
+      margin: 0 auto;
+      pointer-events: all;
+      position: relative;
+      padding: 20px;
+    }
+  }
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'national-semibold', sans-serif;
+    font-size: 3rem;
+    margin-top: 15px;
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+  &__subtitle {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 0 auto 28px;
+    line-height: 1.4;
+    width: 75%;
+  }
+  &-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: alpha(opacity=50);
+    opacity: .5;
+    z-index: 1040;
+    background-color: darken(#D4D6E7, .5);
+  }
+  &__clearfix {
+    @include clearfix();
+  }
+}
+
+.btn {
+  &--mr-popup {
+    min-width: 33%;
+  }
+}
+
+.mr-back-to-login {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

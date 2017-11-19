@@ -1,0 +1,251 @@
+.product-customizer-select-wrap {
+  border-bottom: 1px solid black;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  vertical-align: bottom;
+  .bootstrap-select {
+    display: block;
+    button.btn {
+      color: inherit;
+      border: none;
+      padding: 12px 0;
+      box-shadow: none;
+      background-color: transparent;
+      margin: 0;
+      text-transform: capitalize;
+      width: 100%;
+      &:hover, &:focus {
+        color: inherit;
+        background-color: inherit;
+        border: none;
+        box-shadow: none;
+      }
+    }
+    .dropdown-menu {
+      border: none;
+      box-shadow: none;
+      li {
+        &.selected {
+          a {
+            font-family: 'national-semibold', sans-serif;
+          }
+        }
+        a {
+          &::before {
+            content: '-';
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+    button, .dropdown-menu {
+      float: none;
+    }
+    .glyphicon {
+      display: none;
+    }
+    .dropdown-menu {
+      position: relative;
+      background-color: transparent;
+    }
+    .bs-caret {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.product {
+  .product-title {
+    padding-top: 10px;
+  }
+  .mr-shop {
+    display: none;
+    &.on {
+      display: block;
+    }
+    .btn-wrapper {
+      float: left;
+      .btn {
+        float: none;
+        padding: 8px 30px;
+        &.btn-check-out {
+          display: none;
+          opacity: 0;
+          visibility: hidden;
+          &.visible {
+            display: inline-block;;
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
+
+table.product-variants {
+  thead {
+    color: #808080;
+  }
+  tbody {
+    td {
+      width: 14.8%;
+      &.total {
+        font-family: 'national-semibold', sans-serif;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 40%;
+      }
+      &:nth-child(4) {
+        width: 10%;
+      }
+      &:nth-child(5) {
+        width: 10%;
+      }
+      &:nth-child(6) {
+        width: 10%;
+      }
+      &:nth-child(7) {
+        width: 10%;
+      }
+      &:nth-child(8) {
+        width: 10%;
+      }
+    }
+    .quantity {
+      &__wrapper {
+        border-bottom: 1px solid black;
+        position: relative;
+        background: transparent;
+        overflow: hidden;
+        vertical-align: bottom;
+        width: 50%;
+        input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background: transparent;
+          border: none;
+          height: auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .tfoot {
+    &__text {
+      font-family: 'national-semibold', sans-serif;
+    }
+    &__subtotal {
+      border-bottom: 1px solid black;
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+      vertical-align: bottom;
+      width: 50%;
+    }
+    &__total_ammout {
+      font-family: 'national-semibold', sans-serif;
+    }
+  }
+}
+
+form#add-to-cart-form {
+  @include clearfix;
+}
+
+.product-customizer-options {
+  width: 70%;
+  label {
+    display: none;
+  }
+  &__guide {
+    padding: 10px 0;
+    a {
+      font-family: 'national-semibold', sans-serif;
+    }
+  }
+}
+
+.option-type-text-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  &__title {
+    height: 26px;
+    border-bottom: 1px solid #454545;
+  }
+  & > div {
+    flex: 4;
+    padding: 0 10px;
+    &:first-child {
+      padding: 0;
+      margin-right: 10px;
+    }
+    &:last-child {
+      padding: 0;
+      margin-left: 10px;
+    }
+  }
+  label {
+    display: none;
+  }
+  input {
+    margin-bottom: 0;
+    border-bottom-width: 1px;
+  }
+  &--inscription,
+  &--notes {
+    .option-type-text-group__title {
+      flex: 1;
+    }
+    .product-customizer-option {
+      padding-left: 10px;
+      flex: 3;
+    }
+  }
+}
+
+.product-customizer-image-group {
+  position: relative;
+  & > img {
+    display: none;
+    width: 100%;
+  }
+  &__initials {
+    position: absolute;
+    top: 60%;
+    left: 12%;
+    color: white;
+    transform: rotate(-40deg);
+    font-size: 12px;
+  }
+  &__inscription {
+    position: absolute;
+    color: white;
+    font-size: 9px;
+    top: calc(42% + 2px);
+    left: 55%;
+  }
+  &.mr-blonde-chosen {
+    .product-customizer-image-group__initials {
+      top: 58%;
+    }
+    .product-customizer-image-group__inscription {
+      top: 41%;
+    }
+  }
+}
+
+.error {
+  border-color: red !important;
+}
+
+.validation-fail {
+  color: red !important;
+}

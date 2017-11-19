@@ -1,0 +1,76 @@
+<header id="brand-top" class="brand-wrapper">
+    <a href="/"><img src="{{ 'lewis-fredericks-2.png' | asset_url }}"/></a>
+</header>
+
+<main>
+    <div class="container page-padding"></div>
+    <div class="container padded">
+        <!-- Create Customer Form -->
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+                {% form 'create_customer' %}
+
+                <!-- Display any creation errors. -->
+                {% if form.errors %}
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Could not create account</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            {% for field in form.errors %}
+                            <li>The {{ field | capitalize }} field {{ form.errors.messages[field] }}.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>      
+                </div>
+                {% endif %}
+
+                <!-- Name -->
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <h3>Create new account</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <input type="text" class="form-control" id="customer[first_name]" name="customer[first_name]" value="{{form.first_name}}" placeholder="first name" />
+                        </div>
+                        <div class="col-md-6 xol-xs-12">
+                            <input type="text" class="form-control" id="customer[last_name]" name="customer[last_name]" value="{{form.last_name}}" placeholder="last name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="customer[email]" name="customer[email]" value="{{form.email}}" placeholder="email address" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="customer[password]" name="customer[password]" placeholder="create password" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Button -->
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-lg btn-primary">Register Account</button>
+                </div>
+        
+                <p class="text-right">
+                    {{ 'Return to Login' | customer_login_link }}
+                </p>
+                {% endform %}
+
+            </div>
+        </div>
+    </div>
+</main>

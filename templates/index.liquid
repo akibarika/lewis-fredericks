@@ -1,0 +1,467 @@
+{% assign page = pages.frontpage %}
+
+<header>
+    <nav>
+        <div id="navigation" class="nav-wrapper">
+            <button class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar first"></span>
+                <span class="icon-bar second"></span>
+                <span class="icon-bar third"></span>
+            </button>
+            <ul class="main">
+                <li><a class="anchor" href="#store">Order</a></li>
+                <li><a class="anchor" href="#stockists">Stockists</a></li>
+                <li><a class="anchor" href="#about">About</a></li>
+                <li><a data-toggle="modal" data-target="#modal-contact">Contact</a></li>
+            </ul>
+            <ul class="social">
+                <li><a href="https://www.facebook.com/LewisFredericksEyewear" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/lewis__fredericks" target="_blank">Instagram</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main id="top">
+    <section id="hero-mobile" class="fullscreen">
+        <div class="center-image">
+            <div class="image">
+                <img class="placeholder" src="{{ 'hero-light-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
+            </div>
+        </div>
+    </section>
+    <section id="hero-light" class="fullscreen hide-on-mobile">
+        <div class="center-image">
+            <div class="image">
+                <img class="placeholder" src="{{ 'hero-light-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
+            </div>
+        </div>
+    </section>
+    <section id="hero-dark" class="fullscreen hide-on-mobile">
+        <div class="center-image">
+            <div class="image">
+                <img class="placeholder" src="{{ 'hero-dark-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
+            </div>
+        </div>
+    </section>
+    <div id="content">
+        <div id="brand-wrapper" class="hide-on-mobile">
+            <img id="logo-1" src="{{ 'new-lf-logo.png' | asset_url }}"/>
+         </div>
+        <div id="brand-top" class="brand-wrapper">
+            <img class="homepage-mobile" src="{{ 'lewis-fredericks.png' | asset_url }}"/>
+        </div>
+        <div id="brand-bottom"></div>
+        <div class="container page-padding homepage-mobile"></div>
+        <section id="store" class="content">
+            <div class="container">
+                <div class="row">
+                    {% assign bespoke-products = collections.all.products | sort: 'title' %}
+                    {% for product in bespoke-products %}
+                        {% assign titles = product.title | split: '-' %}
+                        {% assign title = titles | first | strip %}
+                        {% assign subtitle = titles | last | strip %}
+                        <div id="product-id-{{ product.id }}" class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="product-wrapper">
+                                <a href="#" data-toggle="modal"
+                                   data-target="#modal-{{ title | handleize }}-{{ subtitle | handleize }}"
+                                   data-shop="bespoke">
+                                    <div class="product-image-wrapper">
+                                        <div class="product-image"
+                                             style="background-image: url('{{ product.featured_image | product_img_url: "medium" }}');">
+                                        </div>
+                                        <div class="product-image-hover"></div>
+                                        {% if product.available %}
+                                        {% else %}
+                                            <p class="out-of-stock">Sold out</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                                <div class="product-description-wrapper">
+                                    <h5>{{ title }}</h5>
+                                    <p>{{ subtitle }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section id="stockists" class="content">
+            <div class="container padded">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="stockist-container">
+                            <h3 class="heading">Los Angeles</h3>
+                            <div class="stockist">
+                                <h4>Mohawk General Store</h4>
+                                <a target="_blank" href="http://www.mohawkgeneralstore.com/"><p>
+                                        mohawkgeneralstore.com</p>
+                                </a>
+                                <a target="_blank" href="tel:+1 323 669 1601"><p>+1 323-669-1601</p></a>
+                                <div class="stockist-address">
+                                    <p>4011 Sunset Boulevard</p>
+                                    <p>Los Angeles</p>
+                                    <p>CA 90029</p>
+                                    <p>United States</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stockist-container">
+                            <h3 class="heading">Sydney</h3>
+                            <div class="stockist">
+                                <h4>Richards Banks Optometrist</h4>
+                                <a target="_blank" href="http://www.rboptom.com.au/"><p>rboptom.com.au</p></a>
+                                <a target="_blank" href="tel:+61 2 9328 2842"><p>+61 2 9328 2842</p></a>
+                                <div class="stockist-address">
+                                    <p>Shop 7, Queens Court</p>
+                                    <p>118 Queen Street</p>
+                                    <p>Woollahra, NSW 2025</p>
+                                    <p>Australia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stockist-container">
+                            <h3 class="heading">Hamilton</h3>
+                            <div class="stockist">
+                                <h4>Insight Eye Care</h4>
+                                <a target="_blank" href="http://www.insighteyecare.co.nz/"><p>insighteyecare.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 7 849 5803"><p>+64 7 849 5803</p></a>
+                                <div class="stockist-address">
+                                    <p>Te Awa Mall, The Base</p>
+                                    <p>Te Rapa Road</p>
+                                    <p>Hamilton</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stockist-container">
+                            <h3 class="heading">Wellington</h3>
+                            <div class="stockist">
+                                <h4>Scotties</h4>
+                                <a target="_blank" href="http://www.scottiesboutique.co.nz/"><p>scottiesboutique.co.nz</p>
+                                </a>
+                                <a target="_blank" href="tel:+64 4 384 3805"><p>+64 4 384 3805</p></a>
+                                <div class="stockist-address">
+                                    <p>4 Blair Street</p>
+                                    <p>Te Aro</p>
+                                    <p>Wellington</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Woodward Optical</h4>
+                                <a target="_blank" href="http://www.woodwardoptical.co.nz/"><p>woodwardoptical.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 4 472 3067"><p>+64 4 472 3067</p></a>
+                                <div class="stockist-address">
+                                    <p>5 Woodward Street</p>
+                                    <p>Wellington Central</p>
+                                    <p>Wellington</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stockist-container">
+                            <h3 class="heading">Queenstown</h3>
+                            <div class="stockist">
+                                <h4>OCULA</h4>
+                                <a target="_blank" href="http://www.ocula.co.nz/"><p>ocula.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 3 441 4318"><p>+64 3 441 4318</p></a>
+                                <div class="stockist-address">
+                                    <p>10 Athol Street</p>
+                                    <p>Queenstown</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stockist-container">
+                            <h3 class="heading">Wanaka</h3>
+                            <div class="stockist">
+                                <h4>OCULA</h4>
+                                <a target="_blank" href="http://www.ocula.co.nz/"><p>ocula.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 3 443 5103"><p>+64 3 443 5103</p></a>
+                                <div class="stockist-address">
+                                    <p>80 Ardmore Street</p>
+                                    <p>Wanaka</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="stockist-container">
+                            <h3 class="heading">Auckland</h3>
+                            <div class="stockist">
+                                <h4>Workshop | Ponsonby</h4>
+                                <a target="_blank" href="https://www.workshop.co.nz/"><p>workshop.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 361 3727"><p>+64 9 361 3727</p></a>
+                                <div class="stockist-address">
+                                    <p>74 Mackelvie Street</p>
+                                    <p>Ponsonby</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Scotties</h4>
+                                <a target="_blank" href="http://www.scottiesboutique.co.nz/"><p>scottiesboutique.co.nz</p>
+                                </a>
+                                <a target="_blank" href="tel:+64 9 379 6617"><p>+64 9 379 6617</p></a>
+                                <div class="stockist-address">
+                                    <p>2 Blake St</p>
+                                    <p>Ponsonby</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Grace Lang</h4>
+                                <a target="_blank" href="http://www.gracelang.co.nz/"><p>gracelang.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 376 2474"><p>+64 9 376 2474</p></a>
+                                <div class="stockist-address">
+                                    <p>282 Ponsonby Road</p>
+                                    <p>Ponsonby</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Workshop | Newmarket</h4>
+                                <a target="_blank" href="https://www.workshop.co.nz/"><p>workshop.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 524 6844"><p>+64 9 524 6844</p></a>
+                                <div class="stockist-address">
+                                    <p>18 Morrow Street</p>
+                                    <p>Newmarket</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Gates Eyewear</h4>
+                                <a target="_blank" href="http://gateseyewear.co.nz/"><p>gateseyewear.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 524 4962"><p>+64 9 524 4962</p></a>
+                                <div class="stockist-address">
+                                    <p>17a Remuera Road</p>
+                                    <p>Newmarket</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>Workshop | Auckland CBD</h4>
+                                <a target="_blank" href="https://www.workshop.co.nz/"><p>workshop.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 303 3735"><p>+64 9 303 3735</p></a>
+                                <div class="stockist-address">
+                                    <p>Corner Vulcan Lane &amp; High Street</p>
+                                    <p>Auckland Central</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                            <div class="stockist">
+                                <h4>UENO Eyewear</h4>
+                                <a target="_blank" href="http://www.uenoeyewear.co.nz"><p>uenoeyewear.co.nz</p></a>
+                                <a target="_blank" href="tel:+64 9 303 1627"><p>+64 9 303 1627</p></a>
+                                <div class="stockist-address">
+                                    <p>34 Queen Street</p>
+                                    <p>Auckland Central</p>
+                                    <p>Auckland</p>
+                                    <p>New Zealand</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="heading">Sustainable</h3>
+                        <p>Horn is a totally sustainable and natural material. The fibre of horn carries with it
+                            properties that outweigh any synthetic counterpart. Lightweight and durable, each pair will
+                            gracefully flex and gradually mould to the contours of the wearer’s face.</p>
+                        <h3 class="heading">1/1</h3>
+                        <p>Horn is a natural fibre; its integrity, pattern and structure cannot be replicated, making
+                            each individual pair of Lewis Fredericks a completely unique, one of a kind piece.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="heading">Handmade</h3>
+                        <p>With mass production and little technique now a calling card of the eyewear industry, Lewis
+                            Fredericks instead pays tribute to the rich history of eyewear’s past, through recycling the
+                            traditionally used material of horn, polarised lenses and expert hand craftsmanship.</p>
+                        <h3 class="heading">Ethical</h3>
+                        <p>Lewis Fredericks Eyewear offers time-honoured silhouettes fashioned from waste horn, the
+                            previously discarded by-product of domesticated Buffalo, Ox and Ram.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+{% for product in collections.all.products %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+    {% assign titles = product.title | split: '-' %}
+    {% assign title = titles | first | strip %}
+    {% assign subtitle = titles | last | strip %}
+    <div class="modal modal-shop fade" id="modal-{{ title | handleize }}-{{ subtitle | handleize }}" tabindex="-1"
+         role="dialog" aria-labelledby="modal-{{ title | handleize }}-{{ subtitle | handleize }}-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    {% include 'product-content' %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% form 'contact' %}
+
+{% if form.posted_successfully? %}
+    <div class="modal fade modal-centre" id="modal-success" tabindex="-1" role="dialog"
+         aria-labelledby="modal-success-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal-success-label">Message Received</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <p>Thanks for getting in touch.</p>
+                            <p>We'll respond to your enquiry shortly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if form.errors %}
+    <div class="modal fade modal-centre" id="modal-failure" tabindex="-1" role="dialog"
+         aria-labelledby="modal-failure-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modal-failure-label">Contact Form Errors</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <p>Your contact form has errors. To submit your form, make the following changes and try
+                                again:</p>
+                            {% for field in form.errors %}
+                                <p>The {{ field | capitalize | replace: 'Body', 'Message' }}
+                                    field {{ form.errors.messages[field] }}.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="modal fade modal-centre" id="modal-contact" tabindex="-1" role="dialog"
+     aria-labelledby="modal-contact-label">
+    <div id="contactFormWrapper" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modal-contact-label">Contact Us</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <select required id="contactFormSubject" class="form-control placeholder"
+                                    name="contact[subject]">
+                                <option value="" disabled selected hidden>what are you getting in touch about?</option>
+                                <option value="Online Store">- online store</option>
+                                <option value="Purchasing Eyewear">- purchasing eyewear</option>
+                                <option value="Wholesale enquiry">- wholesale enquiry</option>
+                                <option value="Bespoke Eyewear">- bespoke eyewear</option>
+                                <option value="Press">- press</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <input class="form-control" type="text" required id="contactFormName" placeholder="name"
+                               name="contact[name]">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <input class="form-control" type="email" required id="contactFormEmail"
+                               placeholder="email address" name="contact[email]">
+                    </div>
+                    <div class="col-md-12">
+                        <textarea required id="contactFormMessage" placeholder="leave your message here..."
+                                  name="contact[body]"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>
+                    <input class="btn btn-primary" type="submit" id="contactFormSubmit" value="Submit"/>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-centre" id="modal-sizing-guide" tabindex="-1" role="dialog"
+     aria-labelledby="modal-sizing-guide-label">
+    <div id="contactFormWrapper" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modal-sizing-guide-label">A Guide To Eyewear Sizing</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Sunglasses tend to be larger than eyeglasses, so your sunglasses size will most likely be
+                            different than your eyeglasses size. With sunglasses, you have more freedom to choose within
+                            a
+                            wider range of sizes, since the fit does not need to be as precise.</p>
+
+                        <p>There can be quite a few different kinds of numbers and markings inside your frame, and not
+                            all
+                            of them are relevant to the size.</p>
+
+                        <p>The eye size and bridge size are often located next to one another, sometimes separated by a
+                            square box icon. The temple size may immediately follow those two sets of numbers, or have
+                            some
+                            other info in between.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endform %}

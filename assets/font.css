@@ -1,0 +1,5 @@
+@font-face {
+    font-family: 'national-regular';
+    src: url("national-regular.eot");
+    src: url("national-regular.eot") format("embedded-opentype"), url("national-regular.woff") format("woff"), url("national-regular.ttf") format("truetype"), url("national-regular.svg#NationalRegular") format("svg"); 
+}

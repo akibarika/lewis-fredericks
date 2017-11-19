@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="{{ shop.name }}">
+
+    {% include 'variables' %}
+
+    <link href="{{ 'font.css' | asset_url }}" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ 'css-bootstrap-min.css' | asset_url }}" rel="stylesheet">
+    <link href="{{ 'css-bs4sf.css' | asset_url }}" rel="stylesheet">
+    <link href="{{ 'lewisfredericks.css' | asset_url }}" rel="stylesheet">
+
+    <!-- Main compiled stylesheet -->
+    {{ 'mr-lewis.css' | asset_url | stylesheet_tag }}
+
+    <link rel="shortcut icon" href="{{ 'siteicon.png' | asset_url }}" type="image/png"/>
+
+    <!-- HTML5 shim and Respond.js support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ 'js-html5shiv-min.js' | asset_url }}"></script>
+    <script src="{{ 'js-respond-min.js' | asset_url }}"></script>
+    <link href="{{ 'respond-proxy.html' | asset_url | split: '?' | first }}" id="respond-proxy" rel="respond-proxy"/>
+    <link href="{{ shop.url }}/search?q={{ respond_js_hash }}" id="respond-redirect" rel="respond-redirect"/>
+    <script src="{{ shop.url }}/search?q={{ respond_js_hash }}" type="text/javascript"></script>
+    <![endif]-->
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol id="next-chevron-down" class="icon-symbol--loaded">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" enable-background="new 0 0 24 24">
+                <path d="M21 5.176l-9.086 9.353-8.914-9.353-2.314 2.471 11.314 11.735 11.314-11.735-2.314-2.471z"></path>
+            </svg>
+        </symbol>
+    </svg>
+    {{ content_for_header }}
+
+    <!-- Include Main SEO Tags -->
+    {% include 'head-seo' %}
+
+    <!-- Include Social Meta Tags -->
+    {% include 'head-social' %}
+
+    <!-- Conditionally include Shopify's required customer Javascript on customer pages. -->
+    <!-- Needs to be in the head because Shopify's code assumes it's available in the body. -->
+    {% if template contains 'customers' %}
+        {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+        {{ 'customer_area.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    <!-- Conditionally include Shopify's option selection code for product pages. -->
+    {% if template == 'product' %}
+        {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+    <script>
+        // Function to show images as they load
+        function setAsBackground(element) {
+            var url = "url('" + element.src + "')";
+            var parent = element.parentNode;
+            parent.style.backgroundImage = url;
+            parent.style.opacity = "1";
+        }
+
+        // Randomise the page images
+        //var random = Math.random();
+        //var root = document.documentElement;
+        //if (random >= 0.5 ) {
+        //    root.className += ' version-one';
+        //} else {
+        //    root.className += ' version-two';
+        //}
+    </script>
+    {{ 'shopstorm-apps.scss.css' | asset_url | stylesheet_tag }}
+    {% include 'shopstorm-scripttags' %}
+</head>
+<body>
+
+{{ content_for_layout }}
+
+<!-- Site Footer -->
+{% include 'footer' %}
+
+<!-- Error Modal -->
+<div class="modal fade modal-centre" id="modal-alert" tabindex="-1" role="dialog" aria-labelledby="modal-alert-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modal-alert-label"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <p id="modal-alert-status"></p>
+                        <p id="modal-alert-description"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap and core Bootstrap for Shopify Javascript -->
+{{ 'js-jquery-min.js' | asset_url | script_tag }}
+{{ 'js-bootstrap-min.js' | asset_url | script_tag }}
+{{ 'js-bs4sf-min.js' | asset_url | script_tag }}
+{{ 'mr-lewisfredericks.js' | asset_url | script_tag }}
+{{ 'lewisfredericks.js' | asset_url | script_tag }}
+<!-- Hotjar Tracking Code for lewisfredericks.co.nz -->
+<script>
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+            (h.hj.q = h.hj.q || []).push(arguments)
+        };
+        h._hjSettings = {hjid: 81595, hjsv: 5};
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+</script>
+
+<!-- If we're on a product page, set up product page. -->
+{% if template == 'product' %}
+    <script type="text/javascript">
+        jQuery(function () {
+            Shopify.BS4SF.setupProductPage({{ product | json }}, {
+                show_sale_tag: {{ settings.product_show_sale_tag }},
+                money_format: "{{ shop.money_format }}",
+                money_with_currency_format: "{{ shop.money_with_currency_format }}"
+            });
+        });
+    </script>
+{% endif %}
+</body>
+</html>

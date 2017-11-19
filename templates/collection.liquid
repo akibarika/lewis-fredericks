@@ -1,0 +1,51 @@
+<header id="brand-top" class="brand-wrapper">
+    <a href="/"><img src="{{ 'lewis-fredericks-2.png' | asset_url }}"/></a>
+</header>
+
+<main>
+    <div class="container page-padding"></div>
+    <div class="container padded">
+        <div class="row">
+            <!-- Collection Title -->
+            <div class="col-xs-12 col-md-12">
+                <h3>{{ collection.title }}</h3>
+                <!-- Display the collection description if one exists. -->
+                {% unless collection.description == '' %}
+                <p class="text-right">{{ collection.description }}</p>
+                {% endunless %}
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Products -->
+            {% if collection.products.size == 0 %}
+            <div class="col-xs-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        No products found in this collection.
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- Include product list in groups of 3. -->
+            {% for product in collection.products %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+            {% include 'product-list' %}
+            {% endfor %}
+            {% endif %}
+
+
+            <!-- Product Tags (Desktop & Tablet) -->
+            <div class="col-md-2 col-md-offset-1 hidden-xs text-right">
+                {% include 'tag-list' with collection %}
+            </div>
+
+            <!-- Product Tags (Phone) -->
+            <div class="col-md-2 col-md-offset-1 visible-xs text-center">
+                {% include 'tag-list' with collection %}
+            </div>
+
+        </div>
+    </div>
+</main>
