@@ -30,12 +30,12 @@ Click on the Create private apps button.  Fill out the information at the top an
 
 #### Configure an existing theme.  
 
-If you already have a theme on Shopify and want to start using it you will need to view it in your browser and grab the theme ID from the URL. It should be: **156614418**
+If you already have a theme on Shopify and want to start using it you will need to view it in your browser and grab the theme ID from the URL. It should be: **12345678**
 
 Then once you have noted your theme ID, run the following commands:
 
 	# create configuration
-	 theme configure --password [your-password] --store lewis-fredericks-wholesale.myshopify.com --themeid 156614418
+	 theme configure --password [your-password] --store lewis-fredericks-wholesale.myshopify.com --themeid 12345678
 	# download and setup project in the current directory
 	 theme download
 	
