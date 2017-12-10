@@ -1,9 +1,9 @@
 $(document).ready(function() {
     if ($('#content').length) {
         clipHero();
-        clipLogo();
+        // clipLogo();
         highlightNav();
-        pushBrand();
+        // pushBrand();
         colorAbout();
     }
     Theme.AddToCart.updateCart();
@@ -108,9 +108,9 @@ function updateCart() {
 $(window).scroll(function() {
     if ($('#content').length) {
         clipHero();
-        clipLogo();
+        // clipLogo();
         highlightNav();
-        pushBrand();
+        // pushBrand();
         colorAbout();
     }
 });
@@ -118,9 +118,9 @@ $(window).scroll(function() {
 $(window).resize(function() {
     if ($('#content').length) {
         clipHero();
-        clipLogo();
+        // clipLogo();
         highlightNav();
-        pushBrand();
+        // pushBrand();
         colorAbout();
     }
 });

@@ -8,3 +8,17 @@
   font-family: 'national-semibold';
   src: url("national-semibold.otf") format('opentype');
 }
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url("Proxima-Nova-Alt-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  font-weight: bold;
+  src: url("Proxima-Nova-Alt-Bold.otf") format("opentype");
+}
+
+html, body {
+  font-family: 'Proxima Nova', sans-serif;
+}

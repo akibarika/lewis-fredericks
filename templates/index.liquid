@@ -33,20 +33,20 @@
     <section id="hero-light" class="fullscreen hide-on-mobile">
         <div class="center-image">
             <div class="image">
-                <img class="placeholder" src="{{ 'hero-light-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
+                <img class="placeholder" src="{{ 'new-hero-image-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
             </div>
         </div>
     </section>
     <section id="hero-dark" class="fullscreen hide-on-mobile">
         <div class="center-image">
             <div class="image">
-                <img class="placeholder" src="{{ 'hero-dark-1.jpg' | asset_url }}" onload="setAsBackground(this);"/>
+                <img class="placeholder" src="{{ 'new-hero-image-2.jpg' | asset_url }}" onload="setAsBackground(this);"/>
             </div>
         </div>
     </section>
     <div id="content">
         <div id="brand-wrapper" class="hide-on-mobile">
-            <img id="logo-1" src="{{ 'new-lf-logo.png' | asset_url }}"/>
+            <a href="#hero-light"><img id="logo-1" src="{{ 'new-lf-logo.png' | asset_url }}"/></a>
          </div>
         <div id="brand-top" class="brand-wrapper">
             <img class="homepage-mobile" src="{{ 'lewis-fredericks.png' | asset_url }}"/>
@@ -89,6 +89,11 @@
         </section>
         <section id="stockists" class="content">
             <div class="container padded">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img id="stockist-image" src="{{ 'stockist-image.jpg' | asset_url }}"/>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <div class="stockist-container">
@@ -275,6 +280,11 @@
         </section>
         <section id="about" class="content">
             <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img id="about-image" src="{{ 'about-image.jpg' | asset_url }}"/>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <h3 class="heading">Sustainable</h3>
