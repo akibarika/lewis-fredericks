@@ -196,7 +196,9 @@ snippets/footer-pay.liquid:
 snippets/footer-social.liquid:
   development: 2017-11-13T21:31:41+13:00   fd4b85f4600327a1c51d2c46833b7a8e
 snippets/footer.liquid:
-  development: 2017-11-13T21:31:41+13:00   254bff8aab626310fed47944ae6443ed
+  development: 2017-12-19T20:59:30+13:00   2fbab7734be76a71037ede4ffeaaee82
+snippets/footer.liquid___jb_old___:
+  development: 2017-12-19T20:59:30+13:00
 snippets/gravatar.liquid:
   development: 2017-11-13T21:31:41+13:00   f49a533dd591dd64881daccc062f37c9
 snippets/head-og.liquid:
@@ -258,7 +260,7 @@ templates/customers/register.liquid:
 templates/customers/reset_password.liquid:
   development: 2017-11-13T21:31:42+13:00   74445f6966edb4cc219d11d270e5af4f
 templates/index.liquid:
-  development: 2017-11-24T20:20:43+13:00   30a47ca642232fa9d96b2ac0cbf81928
+  development: 2017-12-14T22:04:19+13:00   19bbfa4e62c65b62067fa8b779df6ba5
 templates/page.contact.liquid:
   development: 2017-11-13T21:31:42+13:00   8ee8ea840aa270ac9708687a6c8c834e
 templates/page.liquid:
